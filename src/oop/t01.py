@@ -8,6 +8,8 @@ Created on 2016年11月17日
 
 class News(object):
     def __init__(self, title, update_time):
+        #第一个参数self，代指实例本身
+        #变量前加双下划綫，表示属性封装，对外部不可见
         self.__title = title
         self.__update_time = update_time
 
