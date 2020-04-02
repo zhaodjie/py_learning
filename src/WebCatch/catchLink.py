@@ -2,7 +2,7 @@ import requests
 import re
 import os
 
-url = "https://www.autohome.com.cn/shanghai/"
+url = "http://www.postgres.cn/docs/11/runtime-config-resource.html"
 urlBox = []
 def catchURL(url):
     file = requests.get(url,timeout=5)
@@ -14,14 +14,14 @@ def catchURL(url):
             if currentURL not in urlBox:
                 urlBox.append(currentURL)
                 sql = """
-                ssh pgadmin@10.211.55.8 psql test -U pgadmin << EOF
-                insert into url values(nextval(\'url_seq\'), \'"""+currentURL+"""\');
-                EOF
-                """
+ssh pgadmin@10.211.55.8 psql test -U pgadmin <<EOF
+insert into url values(nextval(\'url_seq\'), \'"""+currentURL+"""\');
+EOF
+"""
                 print(sql)
                 os.popen(sql)
-            print(currentURL)
-            catchURL(currentURL)
+                print(currentURL)
+                catchURL(currentURL)
         except Exception as e:
             pass
             continue
